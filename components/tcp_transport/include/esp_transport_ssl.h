@@ -142,6 +142,16 @@ void esp_transport_ssl_skip_common_name_check(esp_transport_handle_t t);
 void esp_transport_ssl_use_secure_element(esp_transport_handle_t t);
 
 /**
+ * @brief      Enable the use of certification bundle for server verfication for
+ *             an SSL connection.
+ *             It must be first enabled in menuconfig.
+ *
+ * @param      t    ssl transport
+ * @param[in]  crt_bundle_attach    Function pointer to esp_crt_bundle_attach
+ */
+void esp_transport_ssl_crt_bundle_attach(esp_transport_handle_t t, esp_err_t ((*crt_bundle_attach)(void *conf)));
+
+/**
  * @brief      Set PSK key and hint for PSK server/client verification in esp-tls component.
  *             Important notes:
  *             - This function stores the pointer to data, rather than making a copy.
